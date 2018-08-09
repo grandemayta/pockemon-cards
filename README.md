@@ -1,15 +1,5 @@
-# ReactJS Scaffolding
+# Pokemon Cards
 
-All that you need to work with ReactJS without reinvent the wheel.
-
-## Launch the application
-
-```sh
-npm install
-```
-
-```sh
-npm start
-```
+Work in progress...
 
 Keep calm and code!
