@@ -15,5 +15,8 @@
     },
     "settings": {
       "import/resolver": "webpack"
+    },
+    "globals": {
+      "call": true
     }
 }

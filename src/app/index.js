@@ -1,11 +1,11 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import App from './core/app';
-import Invoice from './models/invoice';
+import Followers from './models/followers';
 
-const invoice = Invoice.create({ currency: 'EUR', is_paid: false });
+const followers = Followers.create();
 
-ReactDOM.render(<App invoice={invoice} />, document.getElementById('root'));
+ReactDOM.render(<App followers={followers} />, document.getElementById('root'));
 /* import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './core/routes';
