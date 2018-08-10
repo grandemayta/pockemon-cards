@@ -1,19 +1,24 @@
 import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
 
 class App extends Component {
-  componentDidMount() {
-    //this.props.followers.fetchData();
+  static propTypes = {
+    FollowersStore: PropTypes.any.isRequired
+  };
+
+  componentDidMount = () => {
+    this.props.FollowersStore.loadFollowers();
   }
 
   render() {
-    const { followers } = this.props;
+    const { FollowersStore } = this.props;
     return (
       <div>
         <h1>Followers</h1>
+        <h2>You have {FollowersStore.followersCount} followers!</h2>
         <ul>
-          {followers.items.map(follower => (
+          {FollowersStore.followers.map(follower => (
             <li key={follower.id}>{follower.login}</li>
           ))}
         </ul>
@@ -22,4 +27,4 @@ class App extends Component {
   }
 }
 
-export default observer(App);
+export default inject('FollowersStore')(observer(App));

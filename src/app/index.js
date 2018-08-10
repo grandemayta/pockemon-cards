@@ -1,11 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { Provider } from 'mobx-react';
 import App from './core/app';
-import Followers from './models/followers';
+import FollowersStore from './stores/followers';
 
-const followers = Followers.create();
+const Root = (
+  <Provider FollowersStore={FollowersStore}>
+    <App />
+  </Provider>
+);
 
-ReactDOM.render(<App followers={followers} />, document.getElementById('root'));
+ReactDOM.render(Root, document.getElementById('root'));
 /* import React from 'react';
 import ReactDOM from 'react-dom';
 import Routes from './core/routes';
