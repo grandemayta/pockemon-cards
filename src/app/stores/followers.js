@@ -14,9 +14,9 @@ class FollowersStore {
       const response = yield fetch('https://api.github.com/users/grandemayta/followers');
       this.followers = yield response.json();
     } catch (error) {
-      this.error = error;
+      console.log(`Something go wrong: ${error}`);
     }
-  })
+  });
 }
 
 decorate(FollowersStore, {
