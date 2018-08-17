@@ -1,13 +1,21 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
+import { types } from 'mobx-state-tree';
 import PropTypes from 'prop-types';
-import Followers from '../models/followers';
+import FollowersStore from '../stores/followers';
+import UserStore from '../stores/user';
 
-const followers = Followers.create();
+const followers = FollowersStore.create();
+const user = UserStore.create();
+
+const stores = {
+  followers,
+  user
+};
 
 const Routes = props => (
-  <Provider followers={followers}>
+  <Provider stores={stores}>
     <Router>
       <div>
         {props.routes.map(route => {

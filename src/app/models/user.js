@@ -1,24 +1,32 @@
 import { types } from 'mobx-state-tree';
 
-const User = types.model('User', {
-  login: types.string,
-  id: types.number,
-  node_id: types.string,
-  avatar_url: types.string,
-  gravatar_id: types.string,
-  url: types.string,
-  html_url: types.string,
-  followers_url: types.string,
-  following_url: types.string,
-  gists_url: types.string,
-  starred_url: types.string,
-  subscriptions_url: types.string,
-  organizations_url: types.string,
-  repos_url: types.string,
-  events_url: types.string,
-  received_events_url: types.string,
-  type: types.string,
-  site_admin: types.boolean
+const User = types.model({
+  id: types.string,
+  name: types.string,
+  nationalPokedexNumber: types.optional(types.number, -1),
+  hp: types.optional(types.string, ''),
+  imageUrl: types.string,
+  imageUrlHiRes: types.string,
+  types: types.array(types.string),
+  number: types.string,
+  subtype: types.string,
+  supertype: types.string,
+  attacks: types.array(types.model({
+    cost: types.array(types.string),
+    name: types.string,
+    text: types.optional(types.string, ''),
+    damage: types.string,
+    convertedEnergyCost: types.number
+  })),
+  text: types.array(types.string),
+  weaknesses: types.array(types.model({ type: types.string, value: types.string })),
+  resistances: types.array(types.model({ type: types.string, value: types.string })),
+  retreatCost: types.array(types.string),
+  convertedRetreatCost: types.optional(types.number, -1),
+  artist: types.string,
+  set: types.string,
+  setCode: types.string,
+  rarity: types.string
 });
 
 export default User;
