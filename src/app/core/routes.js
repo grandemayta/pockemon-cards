@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Provider } from 'mobx-react';
-import { types } from 'mobx-state-tree';
 import PropTypes from 'prop-types';
 import FollowersStore from '../stores/followers';
 import UserStore from '../stores/user';
