@@ -5,7 +5,6 @@ import Grid from '@material-ui/core/Grid';
 import GridList from '@material-ui/core/GridList';
 import GridListTile from '@material-ui/core/GridListTile';
 import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
 import IconButton from '@material-ui/core/IconButton';
 import InfoIcon from '@material-ui/icons/Info';
 import TextField from '@material-ui/core/TextField';
@@ -46,17 +45,15 @@ class Search extends Component {
             <Button color="primary" onClick={this.handleSearch}>Search</Button>
           </Grid>
         </Grid>
-        <GridList cellHeight={180}>
-          <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-            <ListSubheader component="div">Pokemons found</ListSubheader>
-          </GridListTile>
+        <GridList cellHeight={200}>
           {this.followers.items.map(tile => (
             <GridListTile key={tile.id}>
               <img src={tile.imageUrl} alt={tile.name} />
               <GridListTileBar
-                title={tile.name}
+                title={<span>Name: {tile.name}</span>}
+                subtitle={<span>Hp: {tile.hp}</span>}
                 actionIcon={
-                  <IconButton>
+                  <IconButton style={{ color: 'rgba(255, 255, 255, 0.54)' }}>
                     <InfoIcon />
                   </IconButton>
                 }
