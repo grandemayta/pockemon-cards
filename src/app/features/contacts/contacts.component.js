@@ -1,25 +1,29 @@
 import React, { Component } from 'react';
-import Link from 'react-router-dom/Link';
+import { inject, observer } from 'mobx-react';
+import PropTypes from 'prop-types';
 
 class Contacts extends Component {
-  constructor() {
+  static propTypes = {
+    stores: PropTypes.any.isRequired
+  };
+
+  constructor(props) {
     super();
-    this.state = {
-      title: 'Contacts',
-      link: '/',
-      mobilePhone: '+39 3349499303'
-    };
+    this.user = props.stores.user;
+  }
+
+  componentDidMount() {
+    this.user.loadUser();
   }
 
   render() {
     return (
       <div>
-        <h1>{this.state.title}</h1>
-        <p>Tel: {this.state.mobilePhone}</p>
-        <Link to={this.state.link}>Go back to home</Link>
+        <h1>Detail Page</h1>
+        <h3>{this.user.item.login}</h3>
       </div>
     );
   }
 }
 
-export default Contacts;
+export default inject('stores')(observer(Contacts));

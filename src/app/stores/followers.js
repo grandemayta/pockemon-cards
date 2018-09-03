@@ -3,16 +3,16 @@ import { configure, decorate, observable, computed, flow } from 'mobx';
 configure({ enforceActions: true });
 
 class FollowersStore {
-  followers = [];
+  items = [];
 
   get followersCount() {
-    return this.followers.length;
+    return this.items.length;
   }
 
   loadFollowers = flow(function* loadFollowers() {
     try {
       const response = yield fetch('https://api.github.com/users/grandemayta/followers');
-      this.followers = yield response.json();
+      this.items = yield response.json();
     } catch (error) {
       console.log(`Something go wrong: ${error}`);
     }
@@ -20,7 +20,7 @@ class FollowersStore {
 }
 
 decorate(FollowersStore, {
-  followers: observable,
+  items: observable,
   followersCount: computed
 });
 

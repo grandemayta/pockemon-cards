@@ -1,30 +1,36 @@
 import React, { Component } from 'react';
 import { inject, observer } from 'mobx-react';
 import PropTypes from 'prop-types';
+import Link from 'react-router-dom/Link';
 
 class Home extends Component {
   static propTypes = {
-    FollowersStore: PropTypes.any.isRequired
+    stores: PropTypes.any.isRequired
   };
 
+  constructor(props) {
+    super();
+    this.followers = props.stores.followers;
+  }
+
   componentDidMount = () => {
-    this.props.FollowersStore.loadFollowers();
+    this.followers.loadFollowers();
   }
 
   render() {
-    const { FollowersStore } = this.props;
     return (
       <div>
         <h1>Followers</h1>
-        <h2>You have {FollowersStore.followersCount} followers!</h2>
+        <h2>You have {this.followers.followersCount} followers!</h2>
         <ul>
-          {FollowersStore.followers.map(follower => (
+          {this.followers.items.map(follower => (
             <li key={follower.id}>{follower.login}</li>
           ))}
         </ul>
+        <Link to="/contacts">Detail</Link>
       </div>
     );
   }
 }
 
-export default inject('FollowersStore')(observer(Home));
+export default inject('stores')(observer(Home));
