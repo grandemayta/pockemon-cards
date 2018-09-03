@@ -1,8 +1,8 @@
-import Home from './home';
+import Search from './search';
 import Contacts from './contacts';
 
 const features = [
-  Home,
+  Search,
   Contacts
 ];
 

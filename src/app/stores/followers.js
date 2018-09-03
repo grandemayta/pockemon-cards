@@ -9,10 +9,11 @@ class FollowersStore {
     return this.items.length;
   }
 
-  loadFollowers = flow(function* loadFollowers() {
+  loadFollowers = flow(function* loadFollowers(name) {
     try {
-      const response = yield fetch('https://api.github.com/users/grandemayta/followers');
-      this.items = yield response.json();
+      const response = yield fetch(`https://api.pokemontcg.io/v1/cards?name=${name}`);
+      const json = yield response.json();
+      this.items = json.cards;
     } catch (error) {
       console.log(`Something go wrong: ${error}`);
     }
