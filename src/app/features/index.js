@@ -1,9 +1,9 @@
 import Search from './search';
-import Contacts from './contacts';
+import Cards from './cards';
 
 const features = [
   Search,
-  Contacts
+  Cards
 ];
 
 export default features;

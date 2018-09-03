@@ -6,12 +6,10 @@ import CssBaseline from '@material-ui/core/CssBaseline';
 import AppBar from '@material-ui/core/AppBar';
 import Toolbar from '@material-ui/core/Toolbar';
 import Typography from '@material-ui/core/Typography';
-import followers from '../stores/followers';
-import user from '../stores/user';
+import cards from '../stores/cards';
 
 const stores = {
-  followers,
-  user
+  cards
 };
 
 const Routes = props => (

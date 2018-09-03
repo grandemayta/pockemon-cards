@@ -2,14 +2,14 @@ import { configure, decorate, observable, computed, flow } from 'mobx';
 
 configure({ enforceActions: true });
 
-class FollowersStore {
+class CardsStore {
   items = [];
 
-  get followersCount() {
+  get cardsCount() {
     return this.items.length;
   }
 
-  loadFollowers = flow(function* loadFollowers(name) {
+  loadCards = flow(function* loadCards(name) {
     try {
       const response = yield fetch(`https://api.pokemontcg.io/v1/cards?name=${name}`);
       const json = yield response.json();
@@ -20,9 +20,9 @@ class FollowersStore {
   });
 }
 
-decorate(FollowersStore, {
+decorate(CardsStore, {
   items: observable,
-  followersCount: computed
+  cardsCount: computed
 });
 
-export default new FollowersStore();
+export default new CardsStore();
